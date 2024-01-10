@@ -34,4 +34,4 @@ jobs:
         run: tests\test_button.py::test_button_exist
       - name: second_test
         if: "github.event.inputs.deployment_target == 'second_test'"
-        run: tests\test_button.py::test_button_exist_2
+        run: tests\test_button.py::test_button_exist_
