@@ -1,18 +1,18 @@
 name: automated tests
 
-on: push
-  # workflow_dispatch:
-    # inputs:
-      # deployment_target:
+on:
+   workflow_dispatch:
+     inputs:
+       deployment_target:
         # Описание
-        # description: Choose target
+         description: Choose target
         # Для выбора пользователя (что запускаем)
-        # required: true
-        # default:
-        # type: choice
-        # options:
-          # - first_test
-          # - second_test
+         required: true
+         default:
+         type: choice
+         options:
+           - first_test
+           - second_test
 
 jobs:
   test:
@@ -30,8 +30,8 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt
       - name: first_test
-      #  if: "github.event.inputs.deployment_target == 'first_test'"
+        if: "github.event.inputs.deployment_target == 'first_test'"
         run: pytest tests/test_button.py::test_button_exist
       - name: second_test
         if: "github.event.inputs.deployment_target == 'second_test'"
-      #  run: pytest tests/test_button.py::test_button_exist_2
+        run: pytest tests/test_button.py::test_button_exist_2
